@@ -20,7 +20,7 @@ public class Student implements InitializingBean,DisposableBean{
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.name = name; 
 	}
 	//어노테이션으로 라이프 사이클 관리 방법 (다른프레임워크에서도 사용가능 )스프링에서 종속 되지 않음  ,첫번쨰로 실행됨
 	//beans.xml에서 xml란에  추가적인 설정을 해야합니다 
