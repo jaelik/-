@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="helloWorld" class="t_tok01.HelloWorld">
+		<property name="messeage" value="spring Hello" />
+	</bean>
+
+	<bean id="battery" class="t_tok02.Battery">
+		<property name="name" value="스프링으로 산 배터리 - 세터" />
+	</bean>
+
+	<bean id="battery2" class="t_tok02.Battery">
+		<constructor-arg name="name" value="스프링으로 산 배터리 - 생성자" />
+	</bean>
+
+	<bean id="blackphone" class="t_tok02.BlackPhone">
+		<constructor-arg ref="battery2" />
+	</bean>
+
+	<!-- 핵심 로직인 ItemTarget을 bean으로 설정 -->
+
+	<bean id="itemTarget" class="t_tok03.ItemTarget"></bean>
+	<bean id="goodsTarget" class="t_tok03.GoodsTarget"></bean>
+
+	<!-- 관점로직인 LoggingAdvice를 bean으로 설정 -->
+	<bean id="logginAdvice" class="t_tok03.LoggingAdvice"></bean>
+
+	<aop:config>
+		<aop:aspect ref="logginAdvice">
+			<aop:before method="beforAdvice" 
+						pointcut="execution(* t_tok03.ItemTarget.*())"/>
+			<aop:before method="beforeBuyConfirm" 
+						pointcut="execution(* t_tok03.ItemTarget.buyItem())"/>
+			<!-- <aop:after method="afterAdvice" 
+						pointcut="execution(* t_tok03.*Target.buy*(..))"/> -->
+			<aop:around method="aroundAdvice" pointcut="execution(* t_tok03.*Target.buy*(..))"/>			
+		</aop:aspect>
+	</aop:config>
+	<context:annotation-config></context:annotation-config>
+<!-- 복습한 부분  -->
+<bean id="helloworld2" class="tr01.HelloWorld">
+	<property name="msg" value="스프링 hello world"/>
+</bean>
+ 	
+
+<!-- init-method = 초기화 메소드 -->
+	<bean  id="student" 
+	class="t_tok4.Student" 
+	init-method="init"
+	destroy-method="clean">
+		<property name="name" value="스프링"/>
+	</bean>
+
+
+
+</beans>
