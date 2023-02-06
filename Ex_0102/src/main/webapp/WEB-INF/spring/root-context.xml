@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		<!-- MVC :  Model View Controller  -->
+		<!-- View와 관련되지 않는것들을 객체로 만든다 . -->
+		<!-- 의존성 주입 setter 값을 넣는것은 property -->
+		<bean id= "p1" class = "vo.PersonVO">
+			<property name="name" value="홍길동"/>
+			<property name="age" value="20"/>
+		</bean>
+		
+		
+</beans>

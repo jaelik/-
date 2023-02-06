@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		</head>
+	<body>
+		안녕하세요
+		<p>[${ip}]님이 접속하셨습니다.</p>
+		<hr>
+		<ul>
+		<c:forEach var="fruit" items="${msg}">
+			<li>${fruit}</li>
+		</c:forEach>
+		</ul>
+	</body>
+</html>

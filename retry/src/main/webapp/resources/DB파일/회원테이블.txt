@@ -1,0 +1,12 @@
+--시퀀스
+create sequence seq_h_user_idx;
+
+--회원테이블
+create table h_user(
+	id varchar2(100) not null,
+	pwd varchar2(100) not null,
+	name varchar2(50) not null,
+	birth varchar2(100),
+	email varchar2(100),
+	tel varchar2(100),
+);

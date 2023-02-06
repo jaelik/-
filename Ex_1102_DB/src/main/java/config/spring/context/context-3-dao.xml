@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- 객체 생성후 setter 메서드  사용시   
+		 sawon_dao.setSqlSession(sqlSessionBean);-->
+		
+	<!-- 객체생성후  생성자 인젝션   메서드 사용시 
+		SawonDAO sawon_dao = new SawonDAO(sqlSessionBean);-->	
+	<bean id="sawon_dao" class="dao.SawonDAO">
+		<constructor-arg  ref="sqlSessionBean"/>
+	</bean>	
+	<bean id="gogek_dao" class="dao.GogekDAO">
+		<constructor-arg  ref="sqlSessionBean"/>
+	</bean>		
+		
+</beans>

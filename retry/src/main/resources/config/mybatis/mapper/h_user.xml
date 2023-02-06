@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="h">
+<!-- 회원등록  -->
+<insert id="user_insert" parameterType="h_user">
+		insert into h_user values(
+							#{id},
+							#{pwd},
+							#{name},
+							#{birth},
+							#{email},
+							#{tel}
+							)
+</insert>
+
+<!-- 아이디 중복 체크시 count를 통해 찾은 id만큼숫자를 반환 -->
+<select id="search_confirmId" resultType="int" parameterType="String">
+		select count(*) from h_user where id= #{id}
+	<!-- 선택  수량조회 h_user 테이블에 id가  파라미터로 받은 id일때 (String) 반환 카운트니 숫자를 반환  -->
+</select>
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
