@@ -28,10 +28,12 @@ public class StudentController {
 	}
 	
 	//방법2. ModelAndView를 활용 하는방식 
-	//- 방법으1의 단계를 한개로 합친 것 
+	//- 방법1의 단계를 한개로 합친 것 
 	
 	@RequestMapping(value ="/student02.do",method = RequestMethod.GET )
 	public ModelAndView student02() {
+		//학생 조회 
+	 studentDAO.select();
 		return new ModelAndView("student/student","student",new Student());
 	}
 	
@@ -40,7 +42,8 @@ public class StudentController {
 	public String addStudent(@ModelAttribute Student student, Model model) {
 		model.addAttribute("student",student);
 		//학생 객체를 DB에 입력 
-		studentDAO.create(student);
+		//studentDAO.create(student);
+		studentDAO.sampleTransaction(student);
 		return "student/result";
 	}
 	
