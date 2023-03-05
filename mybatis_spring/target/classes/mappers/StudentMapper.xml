@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwj.tok.mybatis.MyBatisDao">
+	<select id="findAllStudendt" resultType="com.hwj.tok.model.Student">
+		SELECT * FROM student;
+	</select>
+	
+	<select id="findStudent" resultType="com.hwj.tok.model.Student">
+		SELECT * FROM student WHERE seq = #{seq};
+	</select>
+	
+	<select id="dynamicStudent" resultType="com.hwj.tok.model.Student" parameterType="string">
+	SELECT * FROM student
+	<if test="value != null and value !=''">
+		WHERE id = #{value}
+	</if>
+	;
+	</select>
+	
+	<update id="updateStudent" parameterType="com.hwj.tok.model.Student">
+	
+	UPDATE Student 
+	SET id = #{id},
+	name = #{name},
+	age = #{age} 
+	WHERE seq = #{seq};
+	
+	</update>
+	
+	<delete id="deleteStudent">
+	DELETE FROM Student 
+	WHERE seq = #{seq};
+	</delete>
+</mapper>
