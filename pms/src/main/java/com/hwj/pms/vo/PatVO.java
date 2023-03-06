@@ -1,6 +1,6 @@
-package com.hwj.pms.pat;
+package com.hwj.pms.vo;
 
-public class Patvo {
+public class PatVO {
 	
 	private String id,patname,patsex,patbirth;
 	private Integer patage;

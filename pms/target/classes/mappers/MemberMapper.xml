@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwj.pms.mybatis.MyBatis_MemberDao">
+	<select id="findAllStudendt" resultType="com.hwj.pms.vo.MemberVO">
+		SELECT * FROM student;
+	</select>
+	
+	<select id="findMember" resultType="com.hwj.pms.vo.MemberVO">
+		SELECT * FROM student WHERE seq = #{seq};
+	</select>
+	
+	<select id="dynamicStudent" resultType="com.hwj.pms.vo.MemberVO" parameterType="string">
+	SELECT * FROM student
+	<if test="value != null and value !=''">
+		WHERE id = #{value}
+	</if>
+	;
+	</select>
+	
+	<update id="updateStudent" parameterType="com.hwj.pms.vo.MemberVO">
+	
+	UPDATE Student 
+	SET id = #{id},
+	name = #{name},
+	age = #{age} 
+	WHERE seq = #{seq};
+	
+	</update>
+	
+	<delete id="deleteStudent">
+	DELETE FROM Student 
+	WHERE seq = #{seq};
+	</delete>
+	
+	<insert id="insertMember" parameterType="com.hwj.pms.vo.MemberVO">
+		INSERT INTO pms_member(
+		userid,
+		userpw,
+		username,
+		userage,
+		useraddr
+	)values(
+	 #{id},
+	 #{pw},
+	 #{name},
+	 #{age},
+	 #{adress}
+	 );
+	
+	</insert>
+</mapper>
