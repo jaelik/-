@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.hwj.pms.pat.Patvo;
+import com.hwj.pms.vo.PatVO;
 
 @Controller
 public class PatController {
@@ -17,10 +17,10 @@ public class PatController {
 	
 	@RequestMapping(value = "/pat.do",method = RequestMethod.GET)
 	public ModelAndView pat() {
-		return new ModelAndView("pat/pat","pat",new Patvo());
+		return new ModelAndView("pat/pat","pat",new PatVO());
 	}
 	@RequestMapping(value = "/add/pat.do",method = RequestMethod.POST)
-	public String addPat(@ModelAttribute Patvo pat,Model model) {
+	public String addPat(@ModelAttribute PatVO pat,Model model) {
 		model.addAttribute("pat",pat);
 		return "pat/result";
 	}
