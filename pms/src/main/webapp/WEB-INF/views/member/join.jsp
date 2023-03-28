@@ -112,7 +112,7 @@ $('.id_input').on("propertychange change keyup paste input", function(){
 		url : "${path}/member/memberIdChk",
 		data : data,
 		success : function(result){
-			 //console.log("성공 여부" + result);
+			 console.log("성공 여부" + result);
 			if(result != 'fail'){
 				$('.id_input_re_1').css("display","inline-block");
 				$('.id_input_re_2').css("display", "none");				

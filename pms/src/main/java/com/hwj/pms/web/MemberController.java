@@ -39,7 +39,7 @@ public class MemberController {
 			return"member/login";
 		}
 		// 아이디 중복 검사
-		@RequestMapping(value = "member/memberIdChk", method = RequestMethod.POST)
+		@RequestMapping(value = "/member/memberIdChk", method = RequestMethod.POST)
 		@ResponseBody
 		public String memberIdChkPOST(String memberId) throws Exception{
 			
