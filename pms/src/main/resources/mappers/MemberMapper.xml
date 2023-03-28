@@ -34,20 +34,23 @@
 	WHERE seq = #{seq};
 	</delete>
 	
-	<insert id="insertMember" parameterType="com.hwj.pms.vo.MemberVO">
-		INSERT INTO pms_member(
-		userid,
-		userpw,
-		username,
-		userage,
-		useraddr
-	)values(
-	 #{id},
-	 #{pw},
-	 #{name},
-	 #{age},
-	 #{adress}
-	 );
-	
+	<insert id="memberJoin" parameterType="com.hwj.pms.vo.MemberVO">
+	insert into pms_member values(
+	#{memberId}, 
+	#{memberPw}, 
+	#{memberName}, 
+	#{memberMail}, 
+	#{memberAddr1}, 
+	#{memberAddr2}, 
+	#{memberAddr3}, 
+	0, 
+	regDate, 
+	100000, 5000 
+	)
 	</insert>
+	
+	<!-- 아이디 중복검사 -->
+  	<select id="idCheck" resultType="int">
+  		select count(*) from book_member where memberId = #{memberId}
+  	</select>
 </mapper>
